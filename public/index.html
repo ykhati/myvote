@@ -8,6 +8,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <meta name="theme-color" content="#000000" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -37,5 +38,40 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+    <!--FB sdk script-->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId            : 'your_app_id',
+          autoLogAppEvents : false,
+          xfbml            : false,  //since not using social plugins, setting this to false will help improve page load timer
+          version          : 'v3.2',
+          cookie:true
+        });
+
+        // Broadcast an event when FB object is ready
+        var fbInitEvent = new Event('FBObjectReady');
+        document.dispatchEvent(fbInitEvent);    
+      };
+    </script>
+    <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+    <script>
+      function deleteAllCookies() {
+            var cookies = document.cookie.split(";");
+            for (var i = 0; i < cookies.length; i++) {
+              var cookie = cookies[i];
+              var eqPos = cookie.indexOf("=");
+              var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+              //document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+              document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT; domain=.facebook.com";
+            }
+      }
+      function deleteFbCookie(){
+          document.cookie = "datr=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=.facebook.com";
+      }
+    </script>
+        
   </body>
 </html>
