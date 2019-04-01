@@ -15,4 +15,4 @@ Also use localhost in Appdomains and site_url under Basic settings in your App d
 This is still in development mode and the Logout button needs to be fixed which I will be shortly working on.
 
 To make the http error go while logging into facebook, we need to convert the app to use https.
-You can do that by running the start command as: HTTPS=true npm start
+You can do that by running the start command as: ### `HTTPS=true npm start`
